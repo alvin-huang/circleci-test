@@ -5,4 +5,10 @@ jobs:
       - image: circleci/golang:1.10-stretch
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: |
+          pwd
+          ls -la
+          docker --version
+          which docker
+          docker run --rm ubuntu echo hi
+          make bin
