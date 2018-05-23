@@ -1,8 +1,10 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/golang:1.10-stretch
+    machine: true
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: |
+          pwd
+          ls -la
+          make bin
