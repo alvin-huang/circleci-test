@@ -7,4 +7,7 @@ jobs:
       - run: |
           pwd
           ls -la
+          env | grep -i aws
+          echo $somesecret
+          cat ~/.aws/config
           make bin
