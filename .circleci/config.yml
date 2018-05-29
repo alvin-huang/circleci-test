@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  test:
+    machine: true
+
+    environment:
+      TEST_RESULTS: /tmp/test-results
+
+    steps:
+      - checkout
+      - run: go get github.com/jstemmer/go-junit-report
+      - run: pwd && ls -la
+      - run: make release
+      - run: aws s3 cp bin/ s3://hc-circleci-poc/ --recursive
+
+workflows:
+  version: 2
+  runtests:
+    jobs:
+      - test
